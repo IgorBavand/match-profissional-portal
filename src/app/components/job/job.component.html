@@ -1,0 +1,31 @@
+<div *ngFor="let job of jobs" class="job-card">
+  <div class="job-header">
+    <img src="https://t.ctcdn.com.br/JlHwiRHyv0mTD7GfRkIlgO6eQX8=/640x360/smart/i257652.jpeg" alt="Company Logo" class="company-logo">
+    <div>
+      <h2>{{ job.title }}</h2>
+      <p class="company-name-title">{{ job.company.name }}</p>
+    </div>
+  </div>
+  <div class="job-details">
+    <p><strong>Descrição:</strong> {{ job.description }}</p>
+    <p><strong>Requisitos:</strong></p>
+    <ul>
+      <li *ngFor="let requirement of job.requirements">{{ requirement }}</li>
+    </ul>
+    <p><strong>Tipo de Contrato:</strong> {{ job.contractType }}</p>
+    <p><strong>Salário:</strong> {{ job.salary | currency }}</p>
+    <p><strong>Senioridade:</strong> {{ job.seniority }}</p>
+    <p><strong>Postado em:</strong> {{ job.createdAt | date: 'fullDate' : 'pt-BR' }}</p>
+  </div>
+</div>
+
+<div *ngIf="jobs.length === 0" class="no-jobs">
+  Nenhuma vaga disponível no momento.
+</div>
+
+<!-- Paginação -->
+<div class="pagination-container">
+  <button (click)="previousPage()" [disabled]="currentPage === 1">Anterior</button>
+  <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Próxima</button>
+</div>
