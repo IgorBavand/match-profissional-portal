@@ -173,3 +173,58 @@ $light-border-color: #f1f1f1;
     font-weight: bold;
   }
 }
+
+.filters-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+  }
+
+  input, select {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  button {
+    padding: 8px 12px;
+    background-color: #0073b1;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: #005682;
+    }
+  }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+
+  button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #0073b1;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}

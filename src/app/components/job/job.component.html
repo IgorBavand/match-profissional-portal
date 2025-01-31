@@ -1,3 +1,53 @@
+<div class="filters-container">
+  <label>
+    Empresa:
+    <input type="text" [(ngModel)]="filters.companyName" placeholder="Empresa">
+  </label>
+
+  <label>
+    Tipo de Contrato:
+    <select [(ngModel)]="filters.contractType">
+      <option value="">Todos</option>
+      <option value="CLT">CLT</option>
+      <option value="PJ">PJ</option>
+      <option value="Freelancer">Freelancer</option>
+    </select>
+  </label>
+
+  <label>
+    Senioridade:
+    <select [(ngModel)]="filters.seniority">
+      <option value="">Todas</option>
+      <option value="Júnior">Júnior</option>
+      <option value="Pleno">Pleno</option>
+      <option value="Sênior">Sênior</option>
+    </select>
+  </label>
+
+  <label>
+    Salário Mínimo:
+    <input type="number" [(ngModel)]="filters.minSalary" placeholder="R$">
+  </label>
+
+  <label>
+    Salário Máximo:
+    <input type="number" [(ngModel)]="filters.maxSalary" placeholder="R$">
+  </label>
+
+  <label>
+    Ativo:
+    <select [(ngModel)]="filters.isActive">
+      <option value="">Todos</option>
+      <option value="true">Sim</option>
+      <option value="false">Não</option>
+    </select>
+  </label>
+
+  <button (click)="applyFilters()">Aplicar Filtros</button>
+  <button (click)="resetFilters()">Limpar</button>
+</div>
+
+<!-- Listagem de Vagas -->
 <div *ngFor="let job of jobs" class="job-card">
   <div class="job-header">
     <img src="https://t.ctcdn.com.br/JlHwiRHyv0mTD7GfRkIlgO6eQX8=/640x360/smart/i257652.jpeg" alt="Company Logo" class="company-logo">

@@ -2,6 +2,8 @@ import {Injectable, Injector} from '@angular/core';
 import {HttpBaseService} from "./base.service";
 import {Observable} from "rxjs";
 import {JobResponse} from "../dto/job-response.dto";
+import {HttpParams} from "@angular/common/http";
+import {JobFilter} from "../dto/job-filter.dto";
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +16,8 @@ export class JobService extends HttpBaseService {
     super(injector);
   }
 
-  public getAllJobs(page: number, limit: number): Observable<JobResponse> {
-    return this.httpGet(`${this.endpoint}?page=${page}&limit=${limit}`);
+  public getAllJobs(page: number, limit: number, fiters: JobFilter): Observable<JobResponse> {
+    return this.httpGet(`${this.endpoint}`, page, limit, fiters);
   }
 
 }
