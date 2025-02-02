@@ -51,6 +51,12 @@ export class AuthService extends HttpBaseService{
     );
   }
 
+  logout() {
+    this.clearTokens();
+    this.subjectUser.next(null);
+    this.subjectLogin.next(false);
+  }
+
   private storeTokens(accessToken: string, refreshToken: string) {
     sessionStorage.setItem('token', accessToken);
     sessionStorage.setItem('refreshToken', refreshToken);

@@ -29,6 +29,9 @@ import localePt from '@angular/common/locales/pt';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import {AuthInterceptor} from "./interceptors/auth";
+import { LoginCardComponent } from './components/login/login-card/login-card.component';
+import { ToastComponent } from './components/toast/toast.component';
+import { RegisterCardComponent } from './components/register/register-card/register-card.component';
 
 registerLocaleData(localePt);
 
@@ -39,7 +42,10 @@ registerLocaleData(localePt);
     HomeComponent,
     JobComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginCardComponent,
+    ToastComponent,
+    RegisterCardComponent
   ],
   imports: [
     BrowserModule,

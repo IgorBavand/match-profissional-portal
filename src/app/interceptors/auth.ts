@@ -4,13 +4,16 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
+  HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
+import { ModalService } from '../services/modal.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private modalService: ModalService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const excludedUrls = ['/login'];
@@ -23,7 +26,15 @@ export class AuthInterceptor implements HttpInterceptor {
       }
     }
 
-    return next.handle(req);
+    return next.handle(req).pipe(
+      catchError((error) => {
+        if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
+          this.authService.logout();
+          this.modalService.openLoginModal();
+        }
+        return throwError(error);
+      })
+    );
   }
 
   private addToken(request: HttpRequest<any>, token: string): HttpRequest<any> {
@@ -34,5 +45,3 @@ export class AuthInterceptor implements HttpInterceptor {
     });
   }
 }
-
-//todo => implementar refresh token aqui

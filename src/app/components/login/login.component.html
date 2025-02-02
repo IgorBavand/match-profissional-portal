@@ -1,31 +1,3 @@
 <div class="login-container">
-  <div class="login-card">
-    <h2>Login</h2>
-    <form (submit)="onSubmit()">
-      <label for="email">E-mail</label>
-      <input
-        type="email"
-        id="email"
-        [(ngModel)]="credentials.email"
-        name="email"
-        placeholder="Digite seu e-mail"
-        required
-      />
-
-      <label for="password">Senha</label>
-      <input
-        type="password"
-        id="password"
-        [(ngModel)]="credentials.password"
-        name="password"
-        placeholder="Digite sua senha"
-        required
-      />
-
-      <button type="submit">Entrar</button>
-    </form>
-    <p class="register-link">
-      Não tem uma conta? <a routerLink="/register">Cadastre-se</a>
-    </p>
-  </div>
+<app-login-card></app-login-card>
 </div>
