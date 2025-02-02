@@ -20,4 +20,7 @@ export class JobService extends HttpBaseService {
     return this.httpGet(`${this.endpoint}`, page, limit, fiters);
   }
 
+  public applyToJob(id: string) {
+    return this.httpPost(`${this.endpoint}/${id}/apply`, {});
+  }
 }

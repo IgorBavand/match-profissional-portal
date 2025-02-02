@@ -26,6 +26,7 @@ import {MatListModule} from "@angular/material/list";
 import { JobComponent } from './components/job/job.component';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
+import { LoginComponent } from './components/login/login.component';
 
 registerLocaleData(localePt);
 
@@ -34,7 +35,8 @@ registerLocaleData(localePt);
     AppComponent,
     ToolbarComponent,
     HomeComponent,
-    JobComponent
+    JobComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,56 +1,157 @@
-$primary-color: #007bff;
+// Variáveis de cores e estilos
+$primary-color: #1a73e8; // Azul Google
 $secondary-color: #f8f9fa;
-$text-color: #212529;
+$text-color: #202124;
 $card-bg: #ffffff;
-$border-color: #ddd;
+$border-color: #e0e0e0;
 $transition-duration: 0.3s;
-$light-border-color: #f1f1f1;
+$button-bg: #1a73e8;
+$button-hover-bg: #1557b0;
+$disabled-bg: #e0e0e0;
+$accent-color: #34a853;
+$error-color: #d93025;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.filters-container {
+  width: 100%;
+  padding: 16px;
+  background-color: $card-bg;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+
+  @media (min-width: 768px) {
+    margin-top: 4rem;
+    width: 20%;
+    border-right: 1px solid $border-color;
+    border-bottom: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 16px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: $text-color;
+    margin-bottom: 16px;
+
+    input, select {
+      padding: 8px;
+      border: 1px solid $border-color;
+      border-radius: 8px;
+      font-size: 14px;
+      margin-top: 8px;
+      transition: border-color $transition-duration, box-shadow $transition-duration;
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.2);
+        outline: none;
+      }
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background-color: $button-bg;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color $transition-duration, transform $transition-duration;
+    margin-top: 8px;
+
+    &:hover {
+      background-color: $button-hover-bg;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+.jobs-container {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  height: 100vh;
+
+  @media (min-width: 768px) {
+    margin-left: 300px;
+  }
+}
 
 .job-card {
+
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+
+  float: right;
+  width: 100%;
   background-color: $card-bg;
-  border-radius: 8px;
-  border: 1px solid $light-border-color;
-  padding: 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  border: 1px solid $border-color;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform $transition-duration, box-shadow $transition-duration;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
 
   .job-header {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
 
     .company-logo {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 16px;
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      margin-right: 20px;
       object-fit: cover;
+      border: 1px solid $border-color;
     }
 
-    .job-info {
-      display: flex;
-      flex-direction: column;
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0;
+      color: $text-color;
+    }
 
-      h2 {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin: 0;
-        color: $text-color;
-      }
-
-      p {
-        font-size: 0.9rem;
-        color: $text-color;
-        margin: 4px 0;
-        opacity: 0.8;
-
-      }
-
-      .company-name {
-        font-weight: 600;
-        color: #6c757d;
-        margin-bottom: 8px;
-      }
+    .company-name-title {
+      font-size: 0.95rem;
+      color: lighten($text-color, 20%);
+      margin-top: 4px;
     }
   }
 
@@ -59,172 +160,86 @@ $light-border-color: #f1f1f1;
 
     p {
       font-size: 1rem;
-      margin: 12px 0;
+      margin: 16px 0;
+      line-height: 1.5;
     }
 
     ul {
       list-style-type: disc;
-      margin-left: 20px;
+      margin-left: 24px;
+      padding-left: 0;
     }
 
     strong {
-      color: $text-color;
       font-weight: 600;
+      color: $text-color;
     }
+  }
 
-    .job-status {
-      font-weight: bold;
-      color: #28a745;
-      background-color: #e8f9e4;
-      padding: 4px 8px;
-      border-radius: 8px;
-      display: inline-block;
+  button {
+    padding: 10px 20px;
+    background-color: $button-bg;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color $transition-duration, transform $transition-duration;
+
+    &:hover {
+      background-color: $button-hover-bg;
+      transform: translateY(-1px);
     }
   }
 }
 
 .no-jobs {
   text-align: center;
-  padding: 40px 20px;
-  background-color: #f8f9fa;
+  padding: 60px 20px;
+  background-color: $secondary-color;
   color: $text-color;
-  font-size: 1.2rem;
-  border-radius: 8px;
-  margin-top: 24px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-// Responsividade
-@media (max-width: 768px) {
-  .job-card {
-    .job-header {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .company-logo {
-      margin-bottom: 12px;
-    }
-
-    h2 {
-      font-size: 1.1rem;
-    }
-
-    .job-details {
-      padding: 12px;
-    }
-  }
-}
-
-@media (max-width: 480px) {
-  .job-card {
-    .job-header {
-      .company-logo {
-        width: 45px;
-        height: 45px;
-      }
-
-      h2 {
-        font-size: 1rem;
-      }
-    }
-
-    .job-details {
-      padding: 8px;
-      font-size: 0.9rem;
-    }
-  }
-}
-
-.company-name-title {
-  margin-left: 8px;
-  color: $text-color;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  margin-top: 32px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .pagination-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  gap: 10px;
+  gap: 12px;
+  width: 100%;
+  padding-top: 20px;
+  clear: both;
 
   button {
-    padding: 8px 16px;
+    padding: 10px 20px;
     border: none;
-    background-color: #0073b1;
+    background-color: $button-bg;
     color: white;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color $transition-duration, transform $transition-duration;
 
     &:disabled {
-      background-color: #ccc;
+      background-color: $disabled-bg;
       cursor: not-allowed;
     }
 
     &:hover:not(:disabled) {
-      background-color: #005682;
+      background-color: $button-hover-bg;
+      transform: translateY(-1px);
     }
   }
 
   span {
-    font-size: 16px;
-    font-weight: bold;
-  }
-}
-
-.filters-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-
-  label {
-    display: flex;
-    flex-direction: column;
     font-size: 14px;
-  }
-
-  input, select {
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-
-  button {
-    padding: 8px 12px;
-    background-color: #0073b1;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-
-    &:hover {
-      background-color: #005682;
-    }
+    font-weight: 500;
+    color: $text-color;
   }
 }
 
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 10px;
-
-  button {
-    padding: 8px 16px;
-    border: none;
-    background-color: #0073b1;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-  }
-}

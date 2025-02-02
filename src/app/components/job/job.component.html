@@ -66,7 +66,10 @@
     <p><strong>Salário:</strong> {{ job.salary | currency }}</p>
     <p><strong>Senioridade:</strong> {{ job.seniority }}</p>
     <p><strong>Postado em:</strong> {{ job.createdAt | date: 'fullDate' : 'pt-BR' }}</p>
+    <p><strong>{{ job.applications.length }} candidaturas</strong></p>
   </div>
+
+  <button (click)="applyToJob(job.id)">Candidatura simplificada</button>
 </div>
 
 <div *ngIf="jobs.length === 0" class="no-jobs">

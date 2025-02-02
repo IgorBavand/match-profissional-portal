@@ -25,6 +25,15 @@ export class JobComponent {
     this.getAllJobs();
   }
 
+  public applyToJob(id: string) {
+    console.log(id);
+    this.service.applyToJob(id).subscribe(() => {
+      console.log('Cadastrado com sucesso' + id);
+    }, error => {
+      console.error(error);
+    });
+  }
+
   public getAllJobs() {
     console.log(this.filters);
     this.service.getAllJobs(this.currentPage, this.limit, this.filters)
